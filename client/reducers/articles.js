@@ -1,5 +1,13 @@
 function articles(state = {}, action) {
-   return state;
+   switch(action.type) {
+      case 'RECEIVE_ARTICLES' :
+         return {
+            data: action.data
+         }
+         break;
+      default :
+         return state;
+   }
 }
 
 export default articles;

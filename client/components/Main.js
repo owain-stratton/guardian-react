@@ -3,12 +3,6 @@ import { Link } from 'react-router';
 
 class Main extends Component {
 
-   componentDidMount() {
-      console.log(this.props);
-      const { dispatch, getArticles } = this.props;
-      dispatch(getArticles());
-   }
-
    render() {
       return (
          <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 
 import 'babel-polyfill';
@@ -14,7 +15,10 @@ import ArticleGrid from './components/ArticleGrid';
 import ArticleSingle from './components/ArticleSingle';
 
 // IMPORT STORE
-import store, { history } from './store';
+import configureStore from './store';
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
+// import { history } from './store';
 
 const router = (
    <Provider store={store}>

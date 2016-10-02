@@ -7,7 +7,7 @@
             ["transform-react-display-name"],
             ["react-transform", {
                "transforms": [{
-                  "transforms": "react-transform-hmr",
+                  "transform": "react-transform-hmr",
                   "imports": ["react"],
                   "locals": ["module"]
                },{
