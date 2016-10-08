@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+
+import Article from './Article';
 
 class ArticleGrid extends Component {
 
-   constructor(props) {
-      super(props);
-   }
-
    componentWillMount() {
-      const { getArticles } = this.props;
+      const { dispatch, getArticles } = this.props;
       getArticles();
    }
 
    render() {
-      return (
-         <div>
-            {this.props.articles.data.results.map((article, index) => <p key={index}>{article.fields.headline}</p>)}
-         </div>
-      );
+      if (this.props.articles.data) {
+         return (
+            <div className="article-grid">
+               {this.props.articles.data.results.map( (article, index) => <Article key={index} index={index} article={article} {...this.props} /> )}
+            </div>
+         );
+      } else {
+         return (
+            <div className="loader-container">
+               <div className="loader">
+                  Loading...
+               </div>
+            </div>
+         );
+      }
    }
 }
 

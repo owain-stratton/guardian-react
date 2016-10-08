@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+
+import Article from './Article';
+import ArticleBody from './ArticleBody';
 
 class ArticleSingle extends Component {
    render() {
+      const { articleId } = this.props.params;
+      const currentArticle = this.props.articles.data.results[articleId];
+
       return (
-         <div>
-            I'm the article single page!!
+         <div className="article-container">
+            <Article index={articleId} article={currentArticle} {...this.props} />
+            <ArticleBody index={articleId} article={currentArticle} {...this.props} />
          </div>
       );
    }
